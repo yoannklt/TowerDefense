@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="src\objects\GameObject.cpp">
@@ -33,7 +33,7 @@
     <ClCompile Include="src\engine\rendering\Window.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\system\Collisions.cpp">
+    <ClCompile Include="src\systems\Collisions.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="src\utils\Maths.cpp">
@@ -68,7 +68,7 @@
     <ClInclude Include="src\engine\rendering\Window.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\system\Collisions.h">
+    <ClInclude Include="src\systems\Collisions.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\utils\Maths.h">

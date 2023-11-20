@@ -135,11 +135,11 @@
     <ClCompile Include="src\objects\Bullet.cpp" />
     <ClCompile Include="src\objects\MovingObject.cpp" />
     <ClCompile Include="src\utils\Maths.cpp" />
-    <ClCompile Include="src\system\Collisions.cpp" />
+    <ClCompile Include="src\systems\Collisions.cpp" />
     <ClCompile Include="src\engine\events\EventsManager.cpp" />
     <ClCompile Include="src\core\GameManager.cpp" />
     <ClCompile Include="src\objects\GameObject.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\engine\textures\TextureManager.cpp" />
     <ClCompile Include="src\engine\rendering\Window.cpp" />
     <ClCompile Include="src\objects\Tower.cpp" />
@@ -148,7 +148,7 @@
     <ClInclude Include="src\objects\Bullet.h" />
     <ClInclude Include="src\objects\MovingObject.h" />
     <ClInclude Include="src\utils\Maths.h" />
-    <ClInclude Include="src\system\Collisions.h" />
+    <ClInclude Include="src\systems\Collisions.h" />
     <ClInclude Include="src\engine\events\EventsManager.h" />
     <ClInclude Include="src\core\GameManager.h" />
     <ClInclude Include="src\engine\events\EventsNames.h" />
