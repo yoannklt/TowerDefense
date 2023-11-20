@@ -132,7 +132,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\objects\Ball.cpp" />
+    <ClCompile Include="src\objects\Canon.cpp" />
+    <ClCompile Include="src\objects\MovingObject.cpp" />
+    <ClCompile Include="src\utils\Maths.cpp" />
+    <ClCompile Include="src\system\Collisions.cpp" />
+    <ClCompile Include="src\engine\events\EventsManager.cpp" />
+    <ClCompile Include="src\core\GameManager.cpp" />
+    <ClCompile Include="src\objects\GameObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\engine\textures\TextureManager.cpp" />
+    <ClCompile Include="src\engine\rendering\Window.cpp" />
+    <ClCompile Include="src\objects\Tower.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\objects\Ball.h" />
+    <ClInclude Include="src\objects\Canon.h" />
+    <ClInclude Include="src\objects\MovingObject.h" />
+    <ClInclude Include="src\utils\Maths.h" />
+    <ClInclude Include="src\system\Collisions.h" />
+    <ClInclude Include="src\engine\events\EventsManager.h" />
+    <ClInclude Include="src\core\GameManager.h" />
+    <ClInclude Include="src\engine\events\EventsNames.h" />
+    <ClInclude Include="src\objects\GameObject.h" />
+    <ClInclude Include="src\engine\textures\TextureManager.h" />
+    <ClInclude Include="src\engine\rendering\Window.h" />
+    <ClInclude Include="src\objects\Tower.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
