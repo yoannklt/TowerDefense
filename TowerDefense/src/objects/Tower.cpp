@@ -17,7 +17,8 @@ Tower::Tower(float x, float y, float width, float height) : GameObject(x, y, wid
 	this->sprite = new sf::Sprite(*TextureManager::getTexture("tower.png"));
 	this->drawable = this->sprite;
 	this->transformable = this->sprite;
-	//this->sprite->setOrigin
+	this->sprite->setPosition(x, y);
+	this->sprite->setOrigin(width, height * 1.5);
 
 	GameManager::eventManager.subscribe<Tower>(MOUSE_LEFT_PRESSED, this, &Tower::launchBall);
 	GameManager::eventManager.subscribe<Tower>(BULLET_DESTROYED, this, &Tower::toggleShootCondition);
@@ -42,10 +43,7 @@ void Tower::update(float deltaTime)
 	this->orientation.x = xPoint - mousePosition.x;
 	this->orientation.y = yPoint - mousePosition.y;
 
-	if (degreeAngle < 90 and degreeAngle > -90)
-	{
-		this->sprite->setRotation(-degreeAngle);
-	}
+	this->sprite->setRotation(-degreeAngle);
 }
 
 int Tower::launchBall()
