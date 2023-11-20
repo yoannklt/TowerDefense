@@ -6,7 +6,7 @@
 namespace sf
 {
 	class Color;
-	class RectangleShape;
+	class Sprite;
 }
 
 class Ball;
@@ -16,7 +16,6 @@ class Tower : public GameObject
 public:
 	// CONSTRUCTORS / DESTRUCTORS
 	Tower(float x, float y, float width, float height);
-	Tower(float x, float y, float width, float height, sf::Color color);
 	~Tower();
 
 	void update(float deltaTime) override;
@@ -26,7 +25,7 @@ public:
 	inline int toggleShootCondition() { this->canShoot = !this->canShoot; return 0; };
 
 protected:
-	sf::RectangleShape* shape;
+	sf::Sprite* sprite;
 
 private:
 	bool canShoot = true;
