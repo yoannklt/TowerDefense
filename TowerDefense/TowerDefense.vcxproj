@@ -132,8 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\objects\Ball.cpp" />
-    <ClCompile Include="src\objects\Canon.cpp" />
+    <ClCompile Include="src\objects\Bullet.cpp" />
     <ClCompile Include="src\objects\MovingObject.cpp" />
     <ClCompile Include="src\utils\Maths.cpp" />
     <ClCompile Include="src\system\Collisions.cpp" />
@@ -146,8 +145,7 @@
     <ClCompile Include="src\objects\Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\objects\Ball.h" />
-    <ClInclude Include="src\objects\Canon.h" />
+    <ClInclude Include="src\objects\Bullet.h" />
     <ClInclude Include="src\objects\MovingObject.h" />
     <ClInclude Include="src\utils\Maths.h" />
     <ClInclude Include="src\system\Collisions.h" />

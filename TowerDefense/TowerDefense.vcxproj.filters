@@ -42,10 +42,7 @@
     <ClCompile Include="src\objects\MovingObject.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="src\objects\Ball.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\objects\Canon.cpp">
+    <ClCompile Include="src\objects\Bullet.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="src\objects\Tower.cpp">
@@ -80,10 +77,7 @@
     <ClInclude Include="src\objects\MovingObject.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="src\objects\Ball.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="src\objects\Canon.h">
+    <ClInclude Include="src\objects\Bullet.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="src\objects\Tower.h">
