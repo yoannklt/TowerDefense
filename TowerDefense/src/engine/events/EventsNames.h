@@ -7,8 +7,8 @@ typedef enum EventsNames {
 	KEY_UNKNOWN_PRESSED = 0,  // Unknown key or non-alphanumeric keys
 
 	//CUSTOM EVENTS
-	BALL_CREATED,
-	BALL_DESTROYED,
+	BULLET_CREATED,
+	BULLET_DESTROYED,
 	BRICK_TOUCH,
 	BRICK_DESTROY,
 

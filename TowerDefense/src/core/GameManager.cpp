@@ -5,13 +5,13 @@
 #include "../objects/GameObject.h"
 #include "../objects/MovingObject.h"
 #include "../engine/events/EventsManager.h"
+#include "../objects/Enemy.h"
 
 #include "../engine/rendering/Window.h"
 
-
-
-void GameManager::InitBrickBreaker() {
-
+void GameManager::InitBrickBreaker() 
+{
+    GameManager::spawnRigidBody(new Enemy(0.f, 0.f, 100.f, 100.f, 1.f, 1.f));
 }
 
 void GameManager::render()
