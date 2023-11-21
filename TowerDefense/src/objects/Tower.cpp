@@ -6,6 +6,7 @@
 #include "../engine/textures/TextureManager.h"
 
 #include <cmath>
+#include <iostream>
 #include <SFML/Graphics.hpp>
 
 #include "../utils/Maths.h"
@@ -19,7 +20,7 @@ Tower::Tower(float x, float y, float width, float height) : GameObject(x, y, wid
 	this->transformable = this->sprite;
 	this->sprite->setPosition(x, y);
 	this->sprite->setScale(this->size.x / this->sprite->getGlobalBounds().width, this->size.y / this->sprite->getGlobalBounds().height);
-	this->sprite->setOrigin(width, height * 1.5);
+	this->sprite->setOrigin(width, height);
 
 }
 
@@ -39,6 +40,8 @@ void Tower::update(float deltaTime)
 		return;
 
 	sf::Vector2f targetPosition = target->getPosition();
+
+	//std::cout << "Mouse X: " << mousePosition.x << std::endl << "Mouse Y: " << mousePosition.y << std::endl;
 
 	float xPoint = std::abs(position.x);
 	float yPoint = std::abs(position.y);

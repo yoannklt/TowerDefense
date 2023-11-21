@@ -1,7 +1,10 @@
 #pragma once
 
 #include <SFML/System/Vector2.hpp>
+#include "GameObject.h"
 #include "Enemy.h"
+#include <vector>
+
 
 namespace sf
 {
@@ -24,6 +27,6 @@ protected:
 	sf::Sprite* sprite;
 
 private:
-	bool canShoot = true;
+	std::vector<Enemy*> enemies;
 };
 
