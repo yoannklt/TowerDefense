@@ -6,6 +6,7 @@
 #include "../engine/textures/TextureManager.h"
 
 #include <cmath>
+#include <iostream>
 #include <SFML/Graphics.hpp>
 
 #include "../utils/Maths.h"
@@ -32,6 +33,8 @@ Tower::~Tower()
 void Tower::update(float deltaTime)
 {
 	sf::Vector2i mousePosition = GameManager::getMousePosition();
+
+	//std::cout << "Mouse X: " << mousePosition.x << std::endl << "Mouse Y: " << mousePosition.y << std::endl;
 
 	float xPoint = std::abs(position.x);
 	float yPoint = std::abs(position.y);

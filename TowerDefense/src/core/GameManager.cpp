@@ -7,12 +7,14 @@
 #include "../engine/events/EventsManager.h"
 #include "../objects/Enemy.h"
 #include "../objects/Tower.h"
+#include "../objects/Background.h"
 
 #include "../engine/rendering/Window.h"
 
 void GameManager::InitBrickBreaker() 
 {
-    GameManager::spawnStaticBody(new Enemy(0.f, 0.f, 100.f, 100.f));  
+    GameManager::spawnGameObject(new Background(700.f, 500.f));
+    GameManager::spawnStaticBody(new Enemy(15.f, 230.f, 75.f, 75.f));  
     GameManager::spawnStaticBody(new Tower(400.f, 300.f, 100.f, 300.f)); 
 }
 

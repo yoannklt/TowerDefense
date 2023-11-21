@@ -132,6 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\objects\Background.cpp" />
     <ClCompile Include="src\objects\Enemy.cpp" />
     <ClCompile Include="src\objects\Bullet.cpp" />
     <ClCompile Include="src\objects\MovingObject.cpp" />
@@ -146,6 +147,7 @@
     <ClCompile Include="src\objects\Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\objects\Background.h" />
     <ClInclude Include="src\objects\Enemy.h" />
     <ClInclude Include="src\objects\Bullet.h" />
     <ClInclude Include="src\objects\MovingObject.h" />
