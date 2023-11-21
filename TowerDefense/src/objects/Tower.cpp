@@ -19,7 +19,7 @@ Tower::Tower(float x, float y, float width, float height) : GameObject(x, y, wid
 	this->transformable = this->sprite;
 	this->sprite->setPosition(x, y);
 	this->sprite->setScale(this->size.x / this->sprite->getGlobalBounds().width, this->size.y / this->sprite->getGlobalBounds().height);
-	this->sprite->setOrigin(width, height * 1.5);
+	this->sprite->setOrigin(width, height);
 
 }
 

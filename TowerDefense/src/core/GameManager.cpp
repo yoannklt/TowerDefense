@@ -12,7 +12,7 @@
 
 void GameManager::InitBrickBreaker() 
 {
-    GameManager::spawnRigidBody(new Enemy(0.f, 0.f, 100.f, 100.f, 1.f, 1.f)); 
+    GameManager::spawnStaticBody(new Enemy(0.f, 0.f, 100.f, 100.f));  
     GameManager::spawnStaticBody(new Tower(400.f, 300.f, 100.f, 300.f)); 
 }
 
