@@ -32,7 +32,7 @@ Tower::~Tower()
 
 void Tower::update(float deltaTime)
 {
-	// sf::Vector2i mousePosition = GameManager::getMousePosition();
+	//sf::Vector2i mousePosition = GameManager::getMousePosition();
 
 	Enemy* target = GameManager::getTarget();
 

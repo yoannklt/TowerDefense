@@ -13,14 +13,14 @@ Enemy::Enemy(float x, float y, float width, float height) : GameObject(x, y, hei
 	this->sprite->setScale(width / this->sprite->getGlobalBounds().width, height / this->sprite->getGlobalBounds().height);
 	this->sprite->setOrigin(width/2, height);
 
-	//std::cout << this->sprite->getOrigin().x << "   " << this->sprite->getOrigin().y << std::endl;
-
 	this->sprite->setPosition(x, y);
 
 	this->drawable = this->sprite;
 	this->transformable = this->sprite;
 
-	//this->checkPoints.push_back({ x, y });
+	this->checkPoints.push_back({ 115, 290 });
+	this->checkPoints.push_back({ 120, 140 });
+
 }
 
 void Enemy::update(float deltaTime)
@@ -35,6 +35,7 @@ void Enemy::update(float deltaTime)
 			this->position.x += (this->checkPoints[i + 1].x - this->position.x);
 			this->position.y += (this->checkPoints[i + 1].y - this->position.y);
 			this->sprite->setPosition(this->position.x, this->position.y);
+			std::cout << this->sprite->getPosition().x << "   " << this->sprite->getPosition().y << std::endl;
 		}
 		else
 			this->checkPointIndex++;

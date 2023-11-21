@@ -108,7 +108,6 @@ void GameManager::setEnemy(Enemy* enemy)
 
 Enemy* GameManager::getTarget()
 {
-    std::cout << GameManager::enemies.size() << std::endl;
     if (GameManager::enemies.size() <= 0)
         return nullptr;
 
