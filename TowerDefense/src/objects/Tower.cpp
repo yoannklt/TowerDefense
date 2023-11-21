@@ -18,10 +18,9 @@ Tower::Tower(float x, float y, float width, float height) : GameObject(x, y, wid
 	this->drawable = this->sprite;
 	this->transformable = this->sprite;
 	this->sprite->setPosition(x, y);
+	this->sprite->setScale(this->size.x / this->sprite->getGlobalBounds().width, this->size.y / this->sprite->getGlobalBounds().height);
 	this->sprite->setOrigin(width, height * 1.5);
 
-	GameManager::eventManager.subscribe<Tower>(MOUSE_LEFT_PRESSED, this, &Tower::launchBall);
-	GameManager::eventManager.subscribe<Tower>(BULLET_DESTROYED, this, &Tower::toggleShootCondition);
 }
 
 Tower::~Tower()
@@ -44,20 +43,4 @@ void Tower::update(float deltaTime)
 	this->orientation.y = yPoint - mousePosition.y;
 
 	this->sprite->setRotation(-degreeAngle);
-}
-
-int Tower::launchBall()
-{
-	if (canShoot)
-	{
-		this->canShoot = !this->canShoot;
-		sf::Vector2f normalizeOrientation = Maths::normalize(this->orientation);
-		GameManager::spawnRigidBody(new Bullet(
-			this->sprite->getPosition().x - normalizeOrientation.x * size.y,
-			this->sprite->getPosition().y - normalizeOrientation.y * size.y,
-			30.f,
-			-normalizeOrientation.x,
-			-normalizeOrientation.y, sf::Color::Magenta));
-	}
-	return 0;
 }

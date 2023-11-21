@@ -20,10 +20,6 @@ public:
 
 	void update(float deltaTime) override;
 
-	// TEST FUNCTIONS
-	int launchBall();
-	inline int toggleShootCondition() { this->canShoot = !this->canShoot; return 0; };
-
 protected:
 	sf::Sprite* sprite;
 
