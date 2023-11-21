@@ -99,6 +99,20 @@ Window* GameManager::getWindow()
     return GameManager::window;
 }
 
+void GameManager::setEnemy(Enemy* enemy)
+{
+    GameManager::enemies.push_back(enemy);
+}
+
+Enemy* GameManager::getTarget()
+{
+    std::cout << GameManager::enemies.size() << std::endl;
+    if (GameManager::enemies.size() <= 0)
+        return nullptr;
+
+    return *GameManager::enemies.begin();
+}
+
 sf::Vector2i GameManager::getMousePosition()
 {
     sf::Vector2i mousePosition = GameManager::mouse->getPosition(*GameManager::window->getSFMLObject());
@@ -108,6 +122,7 @@ sf::Vector2i GameManager::getMousePosition()
 
 std::vector<GameObject*> GameManager::gameObjects;
 std::vector<GameObject*> GameManager::gameObjectsToDelete;
+std::vector<Enemy*> GameManager::enemies;
 Window* GameManager::window;
 sf::Mouse* GameManager::mouse;
 Collisions GameManager::collisions;

@@ -17,6 +17,7 @@ class Collisions;
 class EventsManager;
 class Window;
 class Text;
+class Enemy;
 
 class GameManager
 {
@@ -35,6 +36,9 @@ public:
 	static sf::Vector2i getMousePosition();
 	static void bindWindow(Window* window);
 	static Window* getWindow();
+	static void setEnemy(Enemy* enemy);
+	static Enemy* getTarget();
+
 	static EventsManager eventManager;
 
 
@@ -46,6 +50,7 @@ private:
 	static void updateDeltaTime();
 
 	static std::vector<GameObject*> gameObjects;
+	static std::vector<Enemy*> enemies;
 	static std::vector<GameObject*> gameObjectsToDelete;
 
 	static Collisions collisions;

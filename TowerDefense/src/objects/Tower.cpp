@@ -31,16 +31,23 @@ Tower::~Tower()
 
 void Tower::update(float deltaTime)
 {
-	sf::Vector2i mousePosition = GameManager::getMousePosition();
+	// sf::Vector2i mousePosition = GameManager::getMousePosition();
+
+	Enemy* target = GameManager::getTarget();
+
+	if (!target)
+		return;
+
+	sf::Vector2f targetPosition = target->getPosition();
 
 	float xPoint = std::abs(position.x);
 	float yPoint = std::abs(position.y);
 
-	float radianAngle = atan2f(xPoint - mousePosition.x, yPoint - mousePosition.y);
+	float radianAngle = atan2f(xPoint - targetPosition.x, yPoint - targetPosition.y);
 	float degreeAngle = convertRadiansToDegrees(radianAngle);
 
-	this->orientation.x = xPoint - mousePosition.x;
-	this->orientation.y = yPoint - mousePosition.y;
+	this->orientation.x = xPoint - targetPosition.x;
+	this->orientation.y = yPoint - targetPosition.y;
 
 	this->sprite->setRotation(-degreeAngle);
 }

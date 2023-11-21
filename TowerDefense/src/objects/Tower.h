@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SFML/System/Vector2.hpp>
-#include "GameObject.h"
+#include "Enemy.h"
 
 namespace sf
 {
