@@ -45,14 +45,3 @@ float GameObject::getYMax() {
 float GameObject::getWidth() {
 	return this->size.x;
 }
-/*
-float GameObject::getHeight() {
-	return this->size.y;
-}
-*/
-
-float GameObject::convertRadiansToDegrees(float radianAngle)
-{
-	float degreeAngle = radianAngle * 180 / 3.14;
-	return degreeAngle;
-}

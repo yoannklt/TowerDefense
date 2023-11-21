@@ -52,7 +52,6 @@ private:
 
 	static sf::Clock clock;
 	static float deltaTime;
-	static float deltaTimeAsSeconds;
 
 
 	static Window* window;

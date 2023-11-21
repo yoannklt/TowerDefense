@@ -11,7 +11,7 @@
 
 
 void GameManager::InitBrickBreaker() {
-
+    
 }
 
 void GameManager::render()

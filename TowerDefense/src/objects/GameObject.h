@@ -14,8 +14,6 @@ public:
 	// CONSTRUCTORS / DESTRUCTORS
 	GameObject(float x, float y, float width, float height);
 	virtual ~GameObject();
-	float methodName();
-	float methodNameTwo();
 	//
 	virtual void update(float deltaTime) {};
 
@@ -37,8 +35,6 @@ public:
 
 	inline sf::Drawable* getDrawable() { return this->drawable; };
 	inline sf::Transformable* getTransformable() { return this->transformable; };
-	//to move to math namespace
-	float convertRadiansToDegrees(float radianAngle);
 
 protected:
 	sf::Drawable* drawable;
