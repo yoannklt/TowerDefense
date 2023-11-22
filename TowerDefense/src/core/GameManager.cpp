@@ -45,7 +45,7 @@ void GameManager::update()
     //CALL SYSTEMS
     GameManager::collisions.checkCollisions();
 
-    deleteGameObjectsAtEndOfUpdate();
+    GameManager::deleteGameObjectsAtEndOfUpdate();
 }
 
 void GameManager::updateDeltaTime() {

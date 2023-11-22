@@ -27,6 +27,9 @@ protected:
 	sf::Sprite* sprite;
 
 private:
-	std::vector<Enemy*> enemies;
+	void shoot(sf::Vector2f orientation);
+
+	float defaultCooldown = 3;
+	float cooldown = 3;
 };
 
