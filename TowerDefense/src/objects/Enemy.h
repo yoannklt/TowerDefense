@@ -6,6 +6,7 @@
 namespace sf
 {
 	class Sprite;
+	class Vector;
 }
 
 class Enemy : public GameObject
@@ -18,12 +19,15 @@ public:
 
 	void onCollision(sf::Vector2f collisionSide) override;
 
+
 private:
 	sf::Sprite* sprite;
-	int health = 5;
+	int health = 1000;
 	int maxHealth = health;
 	std::vector<sf::Vector2f> checkPoints;
 	int checkPointIndex = 0;
-	int speed = 500;
+	int speed = 100;
+
+	sf::Vector2f orientation = { 0, 0 };
 };
 

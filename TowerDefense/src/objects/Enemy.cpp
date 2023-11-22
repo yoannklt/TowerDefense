@@ -3,6 +3,7 @@
 #include "../core/GameManager.h"
 #include <SFML/Graphics/Sprite.hpp>
 #include <iostream>
+#include "../utils/Maths.h"
 #include "Tower.h"
 
 Enemy::Enemy(float x, float y, float width, float height) : GameObject(x, y, height, width)
@@ -18,29 +19,41 @@ Enemy::Enemy(float x, float y, float width, float height) : GameObject(x, y, hei
 	this->drawable = this->sprite;
 	this->transformable = this->sprite;
 
-	this->checkPoints.push_back({ 115, 290 });
-	this->checkPoints.push_back({ 120, 140 });
+	this->checkPoints.push_back({ 85, 230 });
+	this->checkPoints.push_back({ 85, 85 });
+	this->checkPoints.push_back({ 240, 85 });
+	this->checkPoints.push_back({ 240, 290 });
+	this->checkPoints.push_back({ 410, 290 });
+	this->checkPoints.push_back({ 410, 190 });
+	this->checkPoints.push_back({ 630, 190 });
 
 }
 
 void Enemy::update(float deltaTime)
 {
-	for (int i = 0; i < checkPoints.size(); i++)
+
+	if (checkPointIndex == this->checkPoints.size())
+		return;
+
+	sf::Vector2f distance = {
+		checkPoints[checkPointIndex].x - this->position.x,
+		checkPoints[checkPointIndex].y - this->position.y
+	};
+
+	if (Maths::getNorm(distance) > 5.f)
 	{
-		if (i + 1 == this->checkPoints.size())
-			break;
+		this->orientation.x = this->checkPoints[checkPointIndex].x - this->position.x; 
+		this->orientation.y = this->checkPoints[checkPointIndex].y - this->position.y; 
+		this->orientation = Maths::normalize(orientation); 
 
-		if (position.x != checkPoints[i + 1].x && position.y != checkPoints[i + 1].y)
-		{
-			this->position.x += (this->checkPoints[i + 1].x - this->position.x);
-			this->position.y += (this->checkPoints[i + 1].y - this->position.y);
-			this->sprite->setPosition(this->position.x, this->position.y);
-			std::cout << this->sprite->getPosition().x << "   " << this->sprite->getPosition().y << std::endl;
-		}
-		else
-			this->checkPointIndex++;
+		this->position.x += orientation.x * deltaTime * speed; 
+		this->position.y += orientation.y * deltaTime * speed; 
+		this->sprite->setPosition(this->position.x, this->position.y);
+		std::cout << this->health << std::endl;
 	}
-
+	else
+		this->checkPointIndex++;
+	 
 }
 
 void Enemy::onCollision(sf::Vector2f collisionSide)
@@ -51,5 +64,6 @@ void Enemy::onCollision(sf::Vector2f collisionSide)
 		GameManager::killGameObject(this);
 	}
 }
+
 
 
