@@ -29,6 +29,7 @@ public:
 	static void update();
 	static void spawnGameObject(GameObject* gameObject);
 	static void killGameObject(GameObject* gameObject);
+	static void killEnemy(Enemy* enemy);
 	static void spawnStaticBody(GameObject* staticBody);
 	static void spawnRigidBody(MovingObject* rigidBody);
 	static void registerStaticBody(GameObject* staticBody);

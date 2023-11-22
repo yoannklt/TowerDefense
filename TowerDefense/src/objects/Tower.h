@@ -8,7 +8,6 @@
 
 namespace sf
 {
-	class Color;
 	class Sprite;
 }
 
@@ -23,13 +22,12 @@ public:
 
 	void update(float deltaTime) override;
 
-protected:
-	sf::Sprite* sprite;
-
 private:
-	void shoot(sf::Vector2f orientation);
+	void shoot();
 
 	float defaultCooldown = 3;
 	float cooldown = 3;
+
+	sf::Sprite* sprite;
 };
 

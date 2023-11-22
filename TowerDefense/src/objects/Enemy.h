@@ -22,7 +22,7 @@ public:
 
 private:
 	sf::Sprite* sprite;
-	int health = 1000;
+	int health = 2;
 	int maxHealth = health;
 	std::vector<sf::Vector2f> checkPoints;
 	int checkPointIndex = 0;

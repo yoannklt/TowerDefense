@@ -144,6 +144,9 @@ void Collisions::checkCollisions()
 				}
 				staticBody->onCollision(collisionData->collisionSide);
 			}
+			else {
+				delete collisionData;
+			}
 		}
 		for (CollisionData* collisionData : this->collisionsList) {
 			rigidBody->onCollision(collisionData->collisionSide); //triggerEvent on Specific
@@ -151,7 +154,7 @@ void Collisions::checkCollisions()
 				collisionData->overMoveCoefficient * rigidBody->getOrientation().x + rigidBody->getPosition().x,
 				collisionData->overMoveCoefficient * rigidBody->getOrientation().y + rigidBody->getPosition().y
 			);
-			//delete collisionData;
+			delete collisionData; 
 
 		}
 		this->collisionsList.clear();

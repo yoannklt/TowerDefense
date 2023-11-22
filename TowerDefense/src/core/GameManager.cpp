@@ -13,12 +13,12 @@
 
 void GameManager::InitBrickBreaker() 
 {
-    GameManager::spawnGameObject(new Background(700.f, 500.f));
-    GameManager::spawnStaticBody(new Enemy(-30.f, 230.f, 75.f, 75.f));  
-    GameManager::spawnStaticBody(new Enemy(-90.f, 230.f, 75.f, 75.f));  
-    GameManager::spawnStaticBody(new Enemy(-150.f, 230.f, 75.f, 75.f));  
-    GameManager::spawnStaticBody(new Enemy(-210.f, 230.f, 75.f, 75.f));  
-    GameManager::spawnStaticBody(new Tower(400.f, 300.f, 100.f, 300.f)); 
+    GameManager::spawnGameObject(new Background(700.f, 500.f)); 
+    GameManager::spawnGameObject(new Tower(400.f, 300.f, 50.f, 150.f)); 
+    GameManager::spawnStaticBody(new Enemy(-30.f, 230.f, 50.f, 50.f));
+    GameManager::spawnStaticBody(new Enemy(-90.f, 230.f, 50.f, 50.f));
+    GameManager::spawnStaticBody(new Enemy(-150.f, 230.f, 50.f, 50.f));
+    GameManager::spawnStaticBody(new Enemy(-210.f, 230.f, 50.f, 50.f));
 }
 
 void GameManager::render()
@@ -43,7 +43,7 @@ void GameManager::update()
     }
 
     //CALL SYSTEMS
-    GameManager::collisions.checkCollisions();
+    GameManager::collisions.checkCollisions(); 
 
     GameManager::deleteGameObjectsAtEndOfUpdate();
 }
@@ -64,6 +64,11 @@ void GameManager::killGameObject(GameObject* gameObject)
     GameManager::collisions.unregisterStaticBody(gameObject);
     GameManager::collisions.unregisterRigidBody((MovingObject*)gameObject);
     GameManager::gameObjectsToDelete.push_back(gameObject);
+}
+
+void GameManager::killEnemy(Enemy* enemy)
+{
+    GameManager::enemies.erase(std::remove(GameManager::enemies.begin(), GameManager::enemies.end(), enemy), GameManager::enemies.end());
 }
 
 void GameManager::deleteGameObjectsAtEndOfUpdate() {
@@ -111,7 +116,7 @@ void GameManager::setEnemy(Enemy* enemy)
 
 Enemy* GameManager::getTarget()
 {
-    if (GameManager::enemies.size() <= 0)
+    if (GameManager::enemies.size() == 0)
         return nullptr;
 
     return *GameManager::enemies.begin();

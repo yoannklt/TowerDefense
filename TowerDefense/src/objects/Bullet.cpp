@@ -36,25 +36,11 @@ void Bullet::bounce(int side)
 void Bullet::update(float deltaTime)
 {
 
-	if (position.x + size.x >= GameManager::getWindow()->getSFMLObject()->getSize().x or position.x <= 0)
-	{
-		orientation.x = -orientation.x;
-	}
-
-	if (position.y <= 0)
-	{
-		this->setPosition(position.x, 0);
-		orientation.y = -orientation.y;
-	}
-
 	MovingObject::update(deltaTime);
-
-	if (position.y >= GameManager::getWindow()->getSFMLObject()->getSize().y) {
-		GameManager::killGameObject(this);
-	}
 
 }
 
 void Bullet::onCollision(sf::Vector2f collisionSide) {
 	this->bounce(collisionSide.x);
+	GameManager::killGameObject(this);
 }
