@@ -32,7 +32,13 @@ Tower::~Tower()
 
 void Tower::update(float deltaTime)
 {
-	//sf::Vector2i mousePosition = GameManager::getMousePosition();
+	if (cooldown > 0)
+	{
+		cooldown -= deltaTime;
+		return;
+	}
+	std::cout << "TEST ADZADAZDZD" << std::endl;
+	cooldown = defaultCooldown;
 
 	Enemy* target = GameManager::getTarget();
 
@@ -40,8 +46,6 @@ void Tower::update(float deltaTime)
 		return;
 
 	sf::Vector2f targetPosition = target->getPosition();
-
-	//std::cout << "Mouse X: " << mousePosition.x << std::endl << "Mouse Y: " << mousePosition.y << std::endl;
 
 	float xPoint = std::abs(position.x);
 	float yPoint = std::abs(position.y);
@@ -52,5 +56,9 @@ void Tower::update(float deltaTime)
 	this->orientation.x = xPoint - targetPosition.x;
 	this->orientation.y = yPoint - targetPosition.y;
 
-	this->sprite->setRotation(-degreeAngle);
+}
+
+void Tower::shoot(sf::Vector2f orientation)
+{
+	GameManager::spawnRigidBody(new Bullet(position.x, position.y, 10, orientation.x, -orientation.y));
 }
