@@ -1,60 +1,35 @@
 #pragma once
 
-#include <SFML/System/Vector2.hpp>
 #include <SFML/System/Clock.hpp>
 #include <SFML/System/Time.hpp>
 #include <vector>
-#include <string>
 
-namespace sf
-{
-	class Mouse;
-}
-
-class GameObject;
-class MovingObject;
-class Collisions;
 class EventsManager;
 class Window;
-class Text;
+class GameState;
 
 class GameManager
 {
 public:
-
-	//~GameManager();
-	static void InitBrickBreaker();
-	static void render();
-	static void update();
-	static void spawnGameObject(GameObject* gameObject);
-	static void killGameObject(GameObject* gameObject);
-	static void spawnStaticBody(GameObject* staticBody);
-	static void spawnRigidBody(MovingObject* rigidBody);
-	static void registerStaticBody(GameObject* staticBody);
-	static void registerRigidBody(MovingObject* rigidBody);
-	static sf::Vector2i getMousePosition();
-	static void bindWindow(Window* window);
-	static Window* getWindow();
-	static EventsManager eventManager;
-
-
+	~GameManager() {};
+	static GameManager& instance();
+	void InitGameManager(GameState* initialGameState);
+	void render();
+	void update();
+	Window* getWindow();
+	GameState* getGameState();
+	void switchGameState(GameState*);
+	EventsManager* getEventsManager();
+	//GameManager(const GameManager& obj) = delete;
 
 private:
-	//GameManager(sf::RenderWindow* window););
+	void updateDeltaTime();
+	GameManager() {};
 
-	static void deleteGameObjectsAtEndOfUpdate();
-	static void updateDeltaTime();
-
-	static std::vector<GameObject*> gameObjects;
-	static std::vector<GameObject*> gameObjectsToDelete;
-
-	static Collisions collisions;
-
-	static sf::Clock clock;
-	static float deltaTime;
-
-
-	static Window* window;
-	static sf::Mouse* mouse;
-
+	sf::Clock* clock = new sf::Clock();
+	float deltaTime = 0;
+	Window* window;
+	GameState* gameState;
+	EventsManager* eventsManager;
+	static GameManager* instance_;
 };

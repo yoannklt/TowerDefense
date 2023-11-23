@@ -10,10 +10,10 @@ class Window {
 public:
 	Window(int width, int height, const char* title = "New Project");
 	~Window();
-	int closeWindow();
-	int clearWindow();
-	int drawOnWindow(sf::Drawable* drawable);
-	int display();
+	void closeWindow();
+	void clearWindow();
+	void drawOnWindow(sf::Drawable* drawable);
+	void display();
 	inline sf::RenderWindow* getSFMLObject() { return &window; };
 
 private:

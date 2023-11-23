@@ -132,6 +132,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\gameStates\GameState.cpp" />
+    <ClCompile Include="src\gameStates\PlayGameState.cpp" />
     <ClCompile Include="src\objects\Bullet.cpp" />
     <ClCompile Include="src\objects\MovingObject.cpp" />
     <ClCompile Include="src\utils\Maths.cpp" />
@@ -145,9 +147,11 @@
     <ClCompile Include="src\objects\Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\gameStates\GameState.h" />
     <ClInclude Include="src\engine\events\AbstractCommand.h" />
     <ClInclude Include="src\engine\events\AbstractFunctionCommand.h" />
     <ClInclude Include="src\engine\events\AbstractMethodCommand.h" />
+    <ClInclude Include="src\gameStates\PlayGameState.h" />
     <ClInclude Include="src\objects\Bullet.h" />
     <ClInclude Include="src\objects\MovingObject.h" />
     <ClInclude Include="src\utils\Maths.h" />

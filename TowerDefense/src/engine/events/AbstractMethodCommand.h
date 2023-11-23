@@ -1,15 +1,29 @@
 #pragma once
 #include "AbstractCommand.h"
 
-class AbstractMethodCommand {
+
+
+template<typename T>
+class AbstractMethodCommand : public AbstractCommand {
 public:
-	AbstractMethodCommand(void(*)() callback) {
-		this->functionPointer = (void(*)())callback;
+	
+	AbstractMethodCommand(T methodInstancePointer, void(T::* methodPointer)()) {
+		this->commandIdentifier = { void* methodInstancePointer , (void(VoidClass::*)()) methodPointer, nullptr }
+		this->methodInstancePointer = methodInstancePointer;
+		this->methodPointer = methodPointer;
 	};
+
 	~AbstractMethodCommand() {}
-	virtual int execute(EventContext* context) = 0;
-	virtual bool compareCommandsIdentifier(UniqueCommandIdentifier* commandIdentifier) { 
-		if (commandIdentifier->methodInstancePointer == this->methodInstancePointer && commandIdentifier->methodPointer == this->methodPointer) return true; };
-private:
-	void(*)() functionPointer;
+	virtual int execute(EventContext* context) {
+		methodInstancePointer->methodPointer();
+	};
+	virtual bool compareCommandsIdentifier(UniqueCommandIdentifier* commandIdentifier) { return (
+		commandIdentifier->methodInstancePointer == this->commandIdentifier->methodInstancePointer 
+		&& 
+		commandIdentifier->methodPointer == this->commandIdentifier->methodPointer); 
+	};
+
+protected:
+	T methodInstancePointer;
+	void(T::* methodPointer)()
 };

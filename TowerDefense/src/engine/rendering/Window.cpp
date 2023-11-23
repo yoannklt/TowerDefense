@@ -1,33 +1,30 @@
 #include "Window.h"
 #include "../../core/GameManager.h"
 #include "../events/EventsManager.h"
+#include "../events/AbstractMethodCommand.h"
 
 Window::Window(int width, int height, const char* title) : window(sf::VideoMode(width, height), title) {
-	GameManager::eventManager.subscribe<Window>(CLOSE_WINDOW_BUTTON, this, &Window::closeWindow);
+	GameManager::instance().getEventsManager()->subscribe(CLOSE_WINDOW_BUTTON, new AbstractMethodCommand<Window>(this, &Window::closeWindow));
 }
 
 Window::~Window()
 {
 }
 
-int Window::closeWindow() {
+void Window::closeWindow() {
 	this->window.close();
-	return 0;
 }
 
-int Window::clearWindow() {
+void Window::clearWindow() {
 	this->window.clear();
-	return 0;
 }
 
-int Window::drawOnWindow(sf::Drawable* drawable) {
+void Window::drawOnWindow(sf::Drawable* drawable) {
 	this->window.draw(*drawable);
-	return 0;
 }
 
-int Window::display() {
+void Window::display() {
 	this->window.display();
-	return 0;
 }
 
 

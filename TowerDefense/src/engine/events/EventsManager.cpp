@@ -3,7 +3,7 @@
 #include "../rendering/Window.h"
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
-#include <iostream>
+#include "AbstractCommand.h"
 
 
 EventsManager::EventsManager()
@@ -16,7 +16,7 @@ EventsManager::~EventsManager()
 
 void EventsManager::handleSFMLEvents()
 {
-    while (GameManager::getWindow()->getSFMLObject()->pollEvent(this->event))
+    while (GameManager::instance().getWindow()->getSFMLObject()->pollEvent(this->event))
     {
         this->trigger((this->*(EventsManager::SFMLMapper[this->event.type]))());
     }
@@ -24,9 +24,9 @@ void EventsManager::handleSFMLEvents()
 
 void EventsManager::trigger(EventName eventName)
 {
-    for (EventCallbackData callbackData : eventCallbacksMap[eventName])
+    for (AbstractCommand* command : eventCallbacksMap[eventName])
     {
-        callbackData.callback();
+        command->execute(&(this->context));
     }
 }
 

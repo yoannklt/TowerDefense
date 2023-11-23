@@ -6,6 +6,9 @@
 #include <SFML/Window/Mouse.hpp>
 #include <SFML/Window/Event.hpp>
 #include "EventsNames.h"
+#include "AbstractCommand.h"
+
+
 
 class VoidClass {};
 
@@ -17,41 +20,24 @@ typedef enum EventCallbackReturns {
 	EVENT_CALLBACK_RETURNS_AMOUNT
 } EventCallbackReturn;
 
-using EventCallback = std::function<int()>;
-
-struct EventCallbackData
-{
-	void* instanceAdress;
-	void(VoidClass::* methodPointer)();
-	EventCallback callback;
-};
-
 class EventsManager
 {
 public:
 	EventsManager();
 	~EventsManager();
 
-	template<typename T>
-	void subscribe(EventName eventName, T* instanceAdress, int(T::* methodPointer)())
+	void subscribe(EventName eventName, AbstractCommand* command)
 	{
-		EventCallbackData eventCallbackData;
-		eventCallbackData.instanceAdress = (void*)instanceAdress;
-		eventCallbackData.methodPointer = (void(VoidClass::*)()) methodPointer;
-		eventCallbackData.callback = std::bind(methodPointer, instanceAdress);
-		eventCallbacksMap[eventName].push_back(eventCallbackData);
+		eventCallbacksMap[eventName].push_back(command);
 	}
 
-	template<typename T>
-	void unsubscribe(EventName eventName, T* instanceAdress, int(T::* methodPointer)())
+	void unsubscribe(EventName eventName, AbstractCommand* commandToDelete)
 	{
-		std::vector<EventCallbackData>* eventCallbacks = &eventCallbacksMap[eventName];
-		void* castedInstanceAdress = (void*)instanceAdress;
-		void(VoidClass:: * castedMethodPointer)() = (void(VoidClass::*)()) methodPointer;
+		std::vector<AbstractCommand*>* eventCommands = &eventCallbacksMap[eventName];
 		int index = 0;
-		for (EventCallbackData callbackData : *eventCallbacks) {
-			if (callbackData.instanceAdress == castedInstanceAdress && callbackData.methodPointer == castedMethodPointer) {
-				eventCallbacks->erase(eventCallbacks->begin() + index);
+		for (AbstractCommand* command : *eventCommands) {
+			if (commandToDelete->compareCommandsIdentifier(command->commandIdentifier)) {
+				eventCommands->erase(eventCommands->begin() + index);
 			}
 			index++;
 		}
@@ -73,8 +59,10 @@ public:
 	inline EventName ignoreSFMLEventType() { return EventName::EVENT_NAMES_COUNT; };
 
 private:
+	EventContext context;
+
 	sf::Event event;
-	std::unordered_map<EventName, std::vector<EventCallbackData>> eventCallbacksMap;
+	std::unordered_map<EventName, std::vector<AbstractCommand*>> eventCallbacksMap;
 	static std::unordered_map <sf::Event::EventType, EventName(EventsManager::*)()> SFMLMapper;
 
 	//Translation Maps

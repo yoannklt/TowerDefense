@@ -1,22 +1,23 @@
 #include "core/GameManager.h"
 #include "engine/rendering/Window.h"
 #include "engine/textures/TextureManager.h"
+#include <iostream>
+#include "./gameStates/PlayGameState.h"
 
 int main(int argc, char** argv)
 {
     std::srand(static_cast<unsigned int>(std::time(0)));
-    Window window(700, 480, "BrickBreaker");
-    GameManager::bindWindow(&window);
-    GameManager::InitBrickBreaker();
+
+    GameManager::instance().InitGameManager(new PlayGameState());
 
     //GameLoop
-    while (window.getSFMLObject()->isOpen())
+    while (GameManager::instance().getWindow()->getSFMLObject()->isOpen())
     {
         //UPDATE
-        GameManager::update();
+        GameManager::instance().update();
 
         //DISPLAY
-        GameManager::render();
+        GameManager::instance().render();
 
     }
 
