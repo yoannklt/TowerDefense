@@ -25,8 +25,8 @@ public:
 private:
 	void shoot();
 
-	float defaultCooldown = 3;
-	float cooldown = 3;
+	float defaultCooldown = 1.5f;
+	float cooldown = 0.0f;
 
 	sf::Sprite* sprite;
 };

@@ -58,6 +58,7 @@ void Enemy::update(float deltaTime)
 void Enemy::onCollision(sf::Vector2f collisionSide)
 {
 	this->health -= 1;
+	this->speed -= 25;
 	if (this->health == 0)
 	{
 		GameManager::killGameObject(this);

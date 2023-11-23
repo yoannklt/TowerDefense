@@ -51,16 +51,24 @@ void Tower::update(float deltaTime)
 	sf::Vector2f targetPosition = target->getPosition();
 
 	float xPoint = std::abs(position.x);
-	float yPoint = std::abs(position.y);
+	float yPoint = std::abs(position.y); 
 
-	float radianAngle = atan2f(xPoint - targetPosition.x, yPoint - targetPosition.y);
+	float radianAngle = atan2f(xPoint - targetPosition.x, yPoint - targetPosition.y); 
 	float degreeAngle = convertRadiansToDegrees(radianAngle);
 
 	this->orientation.x = xPoint - targetPosition.x;
 	this->orientation.y = yPoint - targetPosition.y;
+	 
+	sf::Vector2f vectorBetweenTargetAndTower = { 
+		target->getPosition().x - this->position.x, 
+		target->getPosition().y - this->position.y 
+	};
 
-	shoot();
-
+	if (Maths::getNorm(vectorBetweenTargetAndTower) <= 250)
+	{
+		shoot();
+	}
+	 
 }
 
 void Tower::shoot()

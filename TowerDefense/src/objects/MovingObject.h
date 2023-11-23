@@ -10,5 +10,5 @@ public:
 	virtual void update(float deltaTime) override;
 
 protected:
-	int speed = 100;
+	int speed = 300;
 };

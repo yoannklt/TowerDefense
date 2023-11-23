@@ -22,11 +22,12 @@ public:
 
 private:
 	sf::Sprite* sprite;
+	std::vector<sf::Vector2f> checkPoints;
+
 	int health = 2;
 	int maxHealth = health;
-	std::vector<sf::Vector2f> checkPoints;
 	int checkPointIndex = 0;
-	int speed = 100;
+	int speed = 75;
 
 	sf::Vector2f orientation = { 0, 0 };
 };
