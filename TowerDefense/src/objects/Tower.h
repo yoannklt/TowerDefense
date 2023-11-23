@@ -29,5 +29,6 @@ private:
 	float cooldown = 0.0f;
 
 	sf::Sprite* sprite;
+
 };
 

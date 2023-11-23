@@ -19,7 +19,6 @@ public:
 
 	void onCollision(sf::Vector2f collisionSide) override;
 
-
 private:
 	sf::Sprite* sprite;
 	std::vector<sf::Vector2f> checkPoints;

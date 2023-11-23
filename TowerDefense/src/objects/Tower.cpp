@@ -32,21 +32,15 @@ Tower::~Tower()
 
 void Tower::update(float deltaTime)
 {
+	cooldown -= deltaTime;
 	if (cooldown > 0)
-	{
-		cooldown -= deltaTime;
 		return;
-	}
 	cooldown = defaultCooldown;
 
 	Enemy* target = GameManager::getTarget();
 
 	if (target == nullptr)
-	{
-		std::cout << "plus d'ennemi" << std::endl;
 		return;
-
-	}
 
 	sf::Vector2f targetPosition = target->getPosition();
 
@@ -73,5 +67,5 @@ void Tower::update(float deltaTime)
 
 void Tower::shoot()
 {
-	GameManager::spawnRigidBody(new Bullet(position.x, position.y, 15, -orientation.x, -orientation.y, sf::Color::White));
+	GameManager::spawnRigidBody(new Bullet(position.x, position.y, 15, -orientation.x, -orientation.y, sf::Color::Blue));
 }

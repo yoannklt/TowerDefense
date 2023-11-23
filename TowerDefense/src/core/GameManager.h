@@ -52,6 +52,8 @@ private:
 
 	static std::vector<GameObject*> gameObjects;
 	static std::vector<Enemy*> enemies;
+	static int enemiesAmountToSpawn;
+	static float timeBetweenSpawn;
 	static std::vector<GameObject*> gameObjectsToDelete;
 
 	static Collisions collisions;

@@ -13,12 +13,15 @@
 
 void GameManager::InitBrickBreaker() 
 {
-    GameManager::spawnGameObject(new Background(700.f, 500.f)); 
-    GameManager::spawnGameObject(new Tower(400.f, 300.f, 50.f, 150.f)); 
-    GameManager::spawnStaticBody(new Enemy(-30.f, 230.f, 50.f, 50.f));
-    GameManager::spawnStaticBody(new Enemy(-90.f, 230.f, 50.f, 50.f));
-    GameManager::spawnStaticBody(new Enemy(-150.f, 230.f, 50.f, 50.f));
-    GameManager::spawnStaticBody(new Enemy(-210.f, 230.f, 50.f, 50.f));
+    GameManager::getWindow()->getSFMLObject()->setFramerateLimit(60);
+    GameManager::spawnGameObject(new Background(700.f, 500.f));  
+   /* GameManager::spawnStaticBody(new Enemy(-40.f, 230.f, 50.f, 50.f));
+    GameManager::spawnStaticBody(new Enemy(-100.f, 230.f, 50.f, 50.f)); 
+    GameManager::spawnStaticBody(new Enemy(-160.f, 230.f, 50.f, 50.f)); 
+    GameManager::spawnStaticBody(new Enemy(-220.f, 230.f, 50.f, 50.f)); */
+
+    GameManager::spawnGameObject(new Tower(400.f, 300.f, 50.f, 150.f));
+    GameManager::spawnGameObject(new Tower(170.f, 100.f, 50.f, 150.f));
 }
 
 void GameManager::render()
@@ -35,6 +38,21 @@ void GameManager::update()
 {
     GameManager::updateDeltaTime();
     GameManager::eventManager.handleSFMLEvents();
+
+    GameManager::timeBetweenSpawn -= GameManager::deltaTime;
+
+
+    if (GameManager::enemiesAmountToSpawn == 0 && GameManager::enemies.size() == 0)
+        GameManager::enemiesAmountToSpawn = 4;
+
+    if (GameManager::timeBetweenSpawn <= 0 && GameManager::enemiesAmountToSpawn > 0)
+    {
+        GameManager::spawnStaticBody(new Enemy(-40.f, 230.f, 50.f, 50.f));
+        GameManager::enemiesAmountToSpawn -= 1;
+        GameManager::timeBetweenSpawn = 1.5f;
+    }
+
+    std::cout << GameManager::enemiesAmountToSpawn << std::endl; 
 
     //CALL GAME OBJECTS UPDATE SCRIPTS
     for (int i = 0; i < GameManager::gameObjects.size(); i++)
@@ -138,3 +156,5 @@ Collisions GameManager::collisions;
 EventsManager GameManager::eventManager;
 sf::Clock GameManager::clock;
 float GameManager::deltaTime;
+int GameManager::enemiesAmountToSpawn = 4;
+float GameManager::timeBetweenSpawn = 1.5f;
