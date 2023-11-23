@@ -132,6 +132,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\objects\Experience.cpp" />
+    <ClCompile Include="src\objects\Score.cpp" />
     <ClCompile Include="src\objects\Background.cpp" />
     <ClCompile Include="src\objects\Enemy.cpp" />
     <ClCompile Include="src\objects\Bullet.cpp" />
@@ -145,8 +147,11 @@
     <ClCompile Include="src\engine\textures\TextureManager.cpp" />
     <ClCompile Include="src\engine\rendering\Window.cpp" />
     <ClCompile Include="src\objects\Tower.cpp" />
+    <ClCompile Include="src\objects\Text.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\objects\Experience.h" />
+    <ClInclude Include="src\objects\Score.h" />
     <ClInclude Include="src\objects\Background.h" />
     <ClInclude Include="src\objects\Enemy.h" />
     <ClInclude Include="src\objects\Bullet.h" />
@@ -160,6 +165,7 @@
     <ClInclude Include="src\engine\textures\TextureManager.h" />
     <ClInclude Include="src\engine\rendering\Window.h" />
     <ClInclude Include="src\objects\Tower.h" />
+    <ClInclude Include="src\objects\Text.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

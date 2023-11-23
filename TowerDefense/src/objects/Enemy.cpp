@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "../engine/textures/TextureManager.h"
 #include "../core/GameManager.h"
+#include "../engine/events/EventsManager.h"
 #include <SFML/Graphics/Sprite.hpp>
 #include <iostream>
 #include "../utils/Maths.h"
@@ -28,6 +29,11 @@ Enemy::Enemy(float x, float y, float width, float height) : GameObject(x, y, hei
 	this->checkPoints.push_back({ 740, 190 });
 
 }
+
+Enemy::~Enemy() 
+{
+	delete this->sprite; 
+};
 
 void Enemy::update(float deltaTime)
 {
@@ -58,9 +64,10 @@ void Enemy::update(float deltaTime)
 void Enemy::onCollision(sf::Vector2f collisionSide)
 {
 	this->health -= 1;
-	this->speed -= 25;
+	this->speed -= this->speed * 25 / 100;
 	if (this->health == 0)
 	{
+		GameManager::eventManager.trigger(ENEMY_KILL); 
 		GameManager::killGameObject(this);
 		GameManager::killEnemy(this);
 	}

@@ -7,6 +7,8 @@
 #include "../engine/events/EventsManager.h"
 #include "../objects/Enemy.h"
 #include "../objects/Tower.h"
+#include "../objects/Score.h"
+#include "../objects/Experience.h"
 #include "../objects/Background.h"
 
 #include "../engine/rendering/Window.h"
@@ -15,13 +17,13 @@ void GameManager::InitBrickBreaker()
 {
     GameManager::getWindow()->getSFMLObject()->setFramerateLimit(60);
     GameManager::spawnGameObject(new Background(700.f, 500.f));  
-   /* GameManager::spawnStaticBody(new Enemy(-40.f, 230.f, 50.f, 50.f));
-    GameManager::spawnStaticBody(new Enemy(-100.f, 230.f, 50.f, 50.f)); 
-    GameManager::spawnStaticBody(new Enemy(-160.f, 230.f, 50.f, 50.f)); 
-    GameManager::spawnStaticBody(new Enemy(-220.f, 230.f, 50.f, 50.f)); */
 
-    GameManager::spawnGameObject(new Tower(400.f, 300.f, 50.f, 150.f));
+    GameManager::spawnGameObject(new Score("Golds: 0", { 50, 400 }, "data/assets/graphics/fonts/Roboto-Regular.ttf", 40, sf::Color::White));
+    GameManager::spawnGameObject(new Experience("Level: 0", { 400, 400 }, "data/assets/graphics/fonts/Roboto-Regular.ttf", 40, sf::Color::White));
+
     GameManager::spawnGameObject(new Tower(170.f, 100.f, 50.f, 150.f));
+    GameManager::spawnGameObject(new Tower(350.f, 300.f, 50.f, 150.f));
+    GameManager::spawnGameObject(new Tower(500.f, 80.f, 50.f, 150.f));
 }
 
 void GameManager::render()

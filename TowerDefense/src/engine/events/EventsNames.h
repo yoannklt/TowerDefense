@@ -9,8 +9,7 @@ typedef enum EventsNames {
 	//CUSTOM EVENTS
 	BULLET_CREATED,
 	BULLET_DESTROYED,
-	BRICK_TOUCH,
-	BRICK_DESTROY,
+	ENEMY_KILL,
 
 	// Alphanumeric keys
 	KEY_A_PRESSED,

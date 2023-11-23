@@ -13,7 +13,7 @@ class Enemy : public GameObject
 {
 public:
 	Enemy(float x, float y, float width, float height);
-	~Enemy() { delete this->sprite; };
+	~Enemy();
 
 	void update(float deltaTime) override;
 
@@ -23,10 +23,10 @@ private:
 	sf::Sprite* sprite;
 	std::vector<sf::Vector2f> checkPoints;
 
-	int health = 2;
+	int health = 3;
 	int maxHealth = health;
 	int checkPointIndex = 0;
-	int speed = 75;
+	int speed = 100;
 
 	sf::Vector2f orientation = { 0, 0 };
 };
