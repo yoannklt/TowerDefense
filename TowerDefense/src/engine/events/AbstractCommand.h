@@ -1,13 +1,19 @@
 #pragma once
 
-struct EventContext {};
+#include "../../utils/VoidClass.h"
 
-class VoidClass {};
+struct EventContext {};
 
 struct UniqueCommandIdentifier {
 	void* methodInstancePointer;
 	void(VoidClass::* methodPointer)();
 	void(*functionPointer)();
+
+	UniqueCommandIdentifier(void* methodInstancePtr, void (VoidClass::* methodPtr)(), void (*funcPtr)()) {
+		methodInstancePointer = methodInstancePtr;
+		methodPointer = methodPtr;
+		functionPointer = funcPtr;
+	}
 };
 
 class AbstractCommand {

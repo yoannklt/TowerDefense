@@ -1,4 +1,4 @@
-#include "core/GameManager.h"
+#include "engine/core/GameManager.h"
 #include "engine/rendering/Window.h"
 #include "engine/textures/TextureManager.h"
 #include <iostream>
@@ -6,6 +6,7 @@
 
 int main(int argc, char** argv)
 {
+    
     std::srand(static_cast<unsigned int>(std::time(0)));
 
     GameManager::instance().InitGameManager(new PlayGameState());

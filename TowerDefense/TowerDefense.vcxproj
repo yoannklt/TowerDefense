@@ -132,14 +132,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\gameStates\GameState.cpp" />
+    <ClCompile Include="src\engine\core\GameState.cpp" />
+    <ClCompile Include="src\gameStates\GameOverGameState.cpp" />
+    <ClCompile Include="src\gameStates\PauseGameState.cpp" />
     <ClCompile Include="src\gameStates\PlayGameState.cpp" />
-    <ClCompile Include="src\objects\Bullet.cpp" />
+    <ClCompile Include="src\objects\Background.cpp" />
+    <ClCompile Include="src\objects\Fortress.cpp" />
+    <ClCompile Include="src\objects\Projectile.cpp" />
+    <ClCompile Include="src\objects\Enemy.cpp" />
+    <ClCompile Include="src\objects\Experience.cpp" />
     <ClCompile Include="src\objects\MovingObject.cpp" />
+    <ClCompile Include="src\objects\Score.cpp" />
+    <ClCompile Include="src\objects\Text.cpp" />
     <ClCompile Include="src\utils\Maths.cpp" />
     <ClCompile Include="src\systems\Collisions.cpp" />
     <ClCompile Include="src\engine\events\EventsManager.cpp" />
-    <ClCompile Include="src\core\GameManager.cpp" />
+    <ClCompile Include="src\engine\core\GameManager.cpp" />
     <ClCompile Include="src\objects\GameObject.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\engine\textures\TextureManager.cpp" />
@@ -147,22 +155,34 @@
     <ClCompile Include="src\objects\Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\gameStates\GameState.h" />
+    <ClInclude Include="src\engine\core\GameState.h" />
     <ClInclude Include="src\engine\events\AbstractCommand.h" />
-    <ClInclude Include="src\engine\events\AbstractFunctionCommand.h" />
-    <ClInclude Include="src\engine\events\AbstractMethodCommand.h" />
+    <ClInclude Include="src\engine\events\FunctionCommand.h" />
+    <ClInclude Include="src\engine\events\MethodCommand.h" />
+    <ClInclude Include="src\gameStates\GameOverGameState.h" />
+    <ClInclude Include="src\gameStates\PauseGameState.h" />
     <ClInclude Include="src\gameStates\PlayGameState.h" />
-    <ClInclude Include="src\objects\Bullet.h" />
+    <ClInclude Include="src\objects\Background.h" />
+    <ClInclude Include="src\objects\Fortress.h" />
+    <ClInclude Include="src\objects\Projectile.h" />
+    <ClInclude Include="src\objects\Enemy.h" />
+    <ClInclude Include="src\objects\Experience.h" />
     <ClInclude Include="src\objects\MovingObject.h" />
+    <ClInclude Include="src\objects\Score.h" />
+    <ClInclude Include="src\objects\Text.h" />
     <ClInclude Include="src\utils\Maths.h" />
     <ClInclude Include="src\systems\Collisions.h" />
     <ClInclude Include="src\engine\events\EventsManager.h" />
-    <ClInclude Include="src\core\GameManager.h" />
+    <ClInclude Include="src\engine\core\GameManager.h" />
     <ClInclude Include="src\engine\events\EventsNames.h" />
     <ClInclude Include="src\objects\GameObject.h" />
     <ClInclude Include="src\engine\textures\TextureManager.h" />
     <ClInclude Include="src\engine\rendering\Window.h" />
     <ClInclude Include="src\objects\Tower.h" />
+    <ClInclude Include="src\utils\VoidClass.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\..\Downloads\resolve_runes_lol-600x617.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

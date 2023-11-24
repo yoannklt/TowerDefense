@@ -1,21 +1,25 @@
 #pragma once
 #include "AbstractCommand.h"
-
-
+#include "../../utils/VoidClass.h"
 
 template<typename T>
-class AbstractMethodCommand : public AbstractCommand {
-public:
-	
-	AbstractMethodCommand(T methodInstancePointer, void(T::* methodPointer)()) {
-		this->commandIdentifier = { void* methodInstancePointer , (void(VoidClass::*)()) methodPointer, nullptr }
+class MethodCommand : public AbstractCommand 
+{
+public:	
+	MethodCommand(T* methodInstancePointer, void(T::* methodPointer)()) {
+		this->commandIdentifier = new UniqueCommandIdentifier(
+			(void*)methodInstancePointer, 
+			(void(VoidClass::*)()) methodPointer, 
+			nullptr
+		);
 		this->methodInstancePointer = methodInstancePointer;
 		this->methodPointer = methodPointer;
 	};
 
-	~AbstractMethodCommand() {}
+	~MethodCommand() {}
 	virtual int execute(EventContext* context) {
-		methodInstancePointer->methodPointer();
+		(this->methodInstancePointer->*methodPointer)();
+		return 0;
 	};
 	virtual bool compareCommandsIdentifier(UniqueCommandIdentifier* commandIdentifier) { return (
 		commandIdentifier->methodInstancePointer == this->commandIdentifier->methodInstancePointer 
@@ -24,6 +28,6 @@ public:
 	};
 
 protected:
-	T methodInstancePointer;
-	void(T::* methodPointer)()
+	T* methodInstancePointer;
+	void(T::* methodPointer)();
 };

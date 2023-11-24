@@ -144,6 +144,9 @@ void Collisions::checkCollisions()
 				}
 				staticBody->onCollision(collisionData->collisionSide);
 			}
+			else {
+				delete collisionData;
+			}
 		}
 		for (CollisionData* collisionData : this->collisionsList) {
 			rigidBody->onCollision(collisionData->collisionSide); //triggerEvent on Specific

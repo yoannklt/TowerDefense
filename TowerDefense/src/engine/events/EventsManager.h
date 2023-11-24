@@ -7,10 +7,8 @@
 #include <SFML/Window/Event.hpp>
 #include "EventsNames.h"
 #include "AbstractCommand.h"
+#include <iostream>
 
-
-
-class VoidClass {};
 
 
 typedef enum EventCallbackReturns {
@@ -25,14 +23,19 @@ class EventsManager
 public:
 	EventsManager();
 	~EventsManager();
+	void handleSFMLEvents();
+	void trigger(EventName eventName);
 
 	void subscribe(EventName eventName, AbstractCommand* command)
 	{
 		eventCallbacksMap[eventName].push_back(command);
+		std::cout << "Pushed Back" << eventName << "|" << eventCallbacksMap[eventName].size() << "\n";
 	}
 
+	//SHOULD BE TURNED BACK INTO A TEMPLATE FUNCTION - in order not to allocate a whole new command
 	void unsubscribe(EventName eventName, AbstractCommand* commandToDelete)
 	{
+		std::cout << "Pre Removed" << eventName << "|" << eventCallbacksMap[eventName].size() << "\n";
 		std::vector<AbstractCommand*>* eventCommands = &eventCallbacksMap[eventName];
 		int index = 0;
 		for (AbstractCommand* command : *eventCommands) {
@@ -41,10 +44,11 @@ public:
 			}
 			index++;
 		}
+		std::cout << "Removed" << eventName << "|" << eventCallbacksMap[eventName].size() << "\n";
+
 	}
 
-	void handleSFMLEvents();
-	void trigger(EventName eventName);
+
 
 	inline EventName getSFMLKeyPressedEventName() { return EventsManager::SFMLKeyPressedTranslationMap[this->event.key.code]; };
 
@@ -60,7 +64,6 @@ public:
 
 private:
 	EventContext context;
-
 	sf::Event event;
 	std::unordered_map<EventName, std::vector<AbstractCommand*>> eventCallbacksMap;
 	static std::unordered_map <sf::Event::EventType, EventName(EventsManager::*)()> SFMLMapper;

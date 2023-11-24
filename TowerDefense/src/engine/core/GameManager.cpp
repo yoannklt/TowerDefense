@@ -1,7 +1,7 @@
 #include "GameManager.h"
-#include "../gameStates/GameState.h"
-#include "../engine/events/EventsManager.h"
-#include "../engine/rendering/Window.h"
+#include "GameState.h"
+#include "../events/EventsManager.h"
+#include "../rendering/Window.h"
 
 #include "iostream"
 
@@ -10,17 +10,18 @@ GameManager* GameManager::instance_ = NULL;
 
 
 void GameManager::InitGameManager(GameState* initialGameState) {
-    this->eventsManager = new EventsManager();
     this->window = new Window(700, 480, "BrickBreaker");
     this->gameState = initialGameState;
 }
+
+
 
 GameManager& GameManager::instance() 
 {    
     /*
     static GameManager* instanceA = new GameManager();
     return *instanceA;*/
-    
+
     if (!instance_) { 
         instance_ = new GameManager(); 
     };
@@ -34,6 +35,7 @@ void GameManager::render()
     this->gameState->deleteGameObjectsAtEndOfUpdate();
     this->window->display();
 }
+
 
 void GameManager::update()
 {
@@ -64,5 +66,6 @@ GameState* GameManager::getGameState()
 
 void GameManager::switchGameState(GameState* gameState)
 {
+    std::cout << "Switching game state" << std::endl;
     this->gameState = gameState;
 }

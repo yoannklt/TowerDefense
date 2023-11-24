@@ -1,9 +1,11 @@
 #pragma once
+#pragma once
 
 #include <SFML/System/Vector2.hpp>
 #include "GameObject.h"
 #include "Enemy.h"
 #include <vector>
+#include "Text.h"
 
 
 namespace sf
@@ -11,23 +13,21 @@ namespace sf
 	class Sprite;
 }
 
-class Ball;
-
-class Tower : public GameObject
+class Fortress : public GameObject
 {
 public:
 	// CONSTRUCTORS / DESTRUCTORS
-	Tower(float x, float y, float width, float height);
-	~Tower();
+	Fortress(float x, float y, float width, float height, Text* text);
+	~Fortress();
 
 	void update(float deltaTime) override;
 
+	void onDamaged();
+
 private:
-	void shoot();
 
-	float defaultCooldown = 1.5f;
-	float cooldown = 0.0f;
-
+	Text* healthText;
+	int health = 3;
 	sf::Sprite* sprite;
 
 };

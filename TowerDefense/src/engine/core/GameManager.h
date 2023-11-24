@@ -3,8 +3,8 @@
 #include <SFML/System/Clock.hpp>
 #include <SFML/System/Time.hpp>
 #include <vector>
-
-class EventsManager;
+#include "../events/EventsManager.h"
+//class EventsManager;
 class Window;
 class GameState;
 
@@ -13,23 +13,27 @@ class GameManager
 public:
 	~GameManager() {};
 	static GameManager& instance();
+
 	void InitGameManager(GameState* initialGameState);
 	void render();
 	void update();
-	Window* getWindow();
 	GameState* getGameState();
 	void switchGameState(GameState*);
+
+
 	EventsManager* getEventsManager();
-	//GameManager(const GameManager& obj) = delete;
+	Window* getWindow();
 
 private:
-	void updateDeltaTime();
 	GameManager() {};
+	static GameManager* instance_;
 
+	GameState* gameState;
+	void updateDeltaTime();
 	sf::Clock* clock = new sf::Clock();
 	float deltaTime = 0;
 	Window* window;
-	GameState* gameState;
-	EventsManager* eventsManager;
-	static GameManager* instance_;
+	
+	EventsManager* eventsManager = new EventsManager();
+	
 };

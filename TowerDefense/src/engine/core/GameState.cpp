@@ -1,5 +1,5 @@
 #include "GameState.h"
-#include "../engine/rendering/Window.h"
+#include "../rendering/Window.h"
 #include <iostream>
 
 void GameState::render(Window* window) {
@@ -28,6 +28,7 @@ void GameState::killGameObject(GameObject* gameObject)
 }
 
 void GameState::deleteGameObjectsAtEndOfUpdate() {
+    
     for (GameObject* gameObject : this->gameObjectsToDelete) {
         this->gameObjectsToDelete.erase(std::remove(this->gameObjectsToDelete.begin(), this->gameObjectsToDelete.end(), gameObject), this->gameObjectsToDelete.end());
         delete gameObject;

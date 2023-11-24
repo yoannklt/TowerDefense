@@ -1,10 +1,10 @@
 #include "Window.h"
-#include "../../core/GameManager.h"
+#include "../../engine/core/GameManager.h"
 #include "../events/EventsManager.h"
-#include "../events/AbstractMethodCommand.h"
+#include "../events/MethodCommand.h"
 
 Window::Window(int width, int height, const char* title) : window(sf::VideoMode(width, height), title) {
-	GameManager::instance().getEventsManager()->subscribe(CLOSE_WINDOW_BUTTON, new AbstractMethodCommand<Window>(this, &Window::closeWindow));
+	GameManager::instance().getEventsManager()->subscribe(CLOSE_WINDOW_BUTTON, new MethodCommand<Window>(this, &Window::closeWindow));
 }
 
 Window::~Window()
@@ -26,8 +26,3 @@ void Window::drawOnWindow(sf::Drawable* drawable) {
 void Window::display() {
 	this->window.display();
 }
-
-
-//sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "BrickBreaker", sf::Style::Fullscreen);
-//sf::RenderWindow window(sf::VideoMode(640, 480), "BrickBreaker", sf::Style::Fullscreen);
-//sf::RenderWindow window(sf::VideoMode(640, 480), "SFML");
